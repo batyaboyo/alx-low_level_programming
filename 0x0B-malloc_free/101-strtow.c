@@ -17,6 +17,7 @@ int strncat_mod(char *dest, char *src, int i, int str_len)
 		dest[j] = src[i];
 	return (i);
 }
+
 /**
  * mallocmem - allocates memory for output array and sets NULL at string end
  * @newstr: new string
@@ -41,6 +42,7 @@ void mallocmem(char **newstr, char *str, int str_len)
 		i++;
 	}
 }
+
 /**
  * word_count - counts words in input string
  * @str: input string
@@ -65,6 +67,7 @@ int word_count(char *str, int str_len)
 		return (0);
 	return (words);
 }
+
 /**
  * strtow - splits a string into words
  * @str: input string to split
