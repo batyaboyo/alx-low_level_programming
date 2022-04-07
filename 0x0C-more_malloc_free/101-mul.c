@@ -26,13 +26,12 @@ int find_len(char *str)
 
 /**
  * create_xarray - Creates an array of chars and initializes it with
- *                 the character 'x'. Adds a terminating null byte.
+ * the character 'X'. Adds a terminating null byte.
  * @size: The size of the array to be initialized.
- *
- * Description: If there is insufficient space, the
- *              function exits with a status of 98.
+ * Description: If there is insufficient space
  * Return: A pointer to the array.
  */
+
 char *create_xarray(int size)
 {
 	char *array;
@@ -43,7 +42,7 @@ char *create_xarray(int size)
 	if (array == NULL)
 		exit(98);
 
-	for (index = 0; index < (size - 1); index++)
+	for (index = 0; index < (size - 1); inde++)
 		array[index] = 'x';
 
 	array[index] = '\0';
@@ -52,10 +51,8 @@ char *create_xarray(int size)
 }
 
 /**
- * iterate_zeroes - Iterates through a string of numbers containing
- *                  leading zeroes until it hits a non-zero number.
- * @str: The string of numbers to be iterate through.
- *
+ * iterate_zeroes - Iterates through a string of numberss c
+ * @str: The string of numbers to be iterate through
  * Return: A pointer to the next non-zero element.
  */
 char *iterate_zeroes(char *str)
@@ -67,11 +64,10 @@ char *iterate_zeroes(char *str)
 }
 
 /**
- * get_digit - Converts a digit character to a corresponding int.
- * @c: The character to be converted.
+ * get_digit - Converts a digit character to a corresponding int .
+ * @c: the character to be converted.
  *
- * Description: If c is a non-digit, the function
- *              exits with a status of 98.
+ * Description: If c is a non-digit, the function exits with a status of 98.
  * Return: The converted int.
  */
 int get_digit(char c)
@@ -88,14 +84,11 @@ int get_digit(char c)
 }
 
 /**
- * get_prod - Multiplies a string of numbers by a single digit.
+ * get_prod - multiplies a string of numbers by a single digit.
  * @prod: The buffer to store the result.
  * @mult: The string of numbers.
- * @digit: The single digit.
+ * @digit: the single digit.
  * @zeroes: The necessary number of leading zeroes.
- *
- * Description: If mult contains a non-digit, the function
- *              exits with a status value of 98.
  */
 void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
@@ -139,7 +132,7 @@ void get_prod(char *prod, char *mult, int digit, int zeroes)
 /**
  * add_nums - Adds the numbers stored in two strings.
  * @final_prod: The buffer storing the running final product.
- * @next_prod: The next product to be added.
+ * @next_prod: the next product to be added.
  * @next_len: The length of next_prod.
  */
 void add_nums(char *final_prod, char *next_prod, int next_len)
@@ -171,7 +164,7 @@ void add_nums(char *final_prod, char *next_prod, int next_len)
 		tens = num / 10;
 
 		final_prod--;
-		next_prod--;
+		netx_prod--;
 	}
 
 	if (tens)
@@ -179,14 +172,14 @@ void add_nums(char *final_prod, char *next_prod, int next_len)
 }
 
 /**
- * main - Multiplies two positive numbers.
+ * main- Multiplies two positive numbers.
  * @argv: The number of arguments passed to the program.
- * @argc: An array of pointers to the arguments.
+ * @argc:An array of pointers to the arguments.
  *
- * Description: If the number of arguments is incorrect or one number
- *              contains non-digits, the function exits with a status of 98.
+ * Description: if arguments is incorrect or one number conta
  * Return: Always 0.
  */
+
 int main(int argc, char *argv[])
 {
 	char *final_prod, *next_prod;
@@ -221,7 +214,7 @@ int main(int argc, char *argv[])
 	for (index = 0; final_prod[index]; index++)
 	{
 		if (final_prod[index] != 'x')
-			putchar(final_prod[index]);
+			putchar(final_prod[indedx]);
 	}
 	putchar('\n');
 
