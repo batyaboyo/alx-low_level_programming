@@ -1,90 +1,64 @@
-#include <stdio.h>
 #include "dog.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
- * _strlen - swaps integers with pointers.
- * @s: is a pointer to a char
+ * _strdup - create an array with special charcter.
+ * @str: chacter value.
  *
- * Return: nothing.
-**/
-int _strlen(char *s)
-{
-int i;
-for (i = 0; *s != '\0'; s++)
-{
-i++;
-}
-return (i);
-}
-
-/**
- * _strncpy - Swaps integers wih pointers.
- *
- * @dest: is a pointer to a char.
- *
- * @src: is a pointer to a char.
- *
- * @n: is a pointer to an int.
- *
- * Return: Always 0.
+ * Return: .
  */
-
-char *_strncpy(char *dest, char *src, int n)
+char *_strdup(char *str)
 {
-int i;
+	unsigned int i;
+	char *s;
 
-for (i = 0; i < n && src[i] != '\0'; i++)
-dest[i] = src[i];
-
-for (i = i; i < n; i++)
-dest[i] = '\0';
-
-return (dest);
+	if (str == NULL)
+		return (NULL);
+	for (i = 0; str[i] != 0; i++)
+		;
+	i = i + 1;
+	s = malloc(sizeof(char) * i);
+	if (s == NULL)
+		return (NULL);
+	if (s != NULL)
+	{
+		for (i = 0; str[i] != 0; i++)
+			s[i] = str[i];
+	}
+	s[i] = '\0';
+	return (s);
 }
-
 /**
- * new_dog - Creates function with copy of name and owner
+ *new_dog  -  create new dog.
+ *@name: character value.
+ *@age: float value.
+ *@owner: character value.
  *
- * @name: name parameter
- * @age: age parameter
- * @owner: owner parameter
- *
- * Return: nothing.
-**/
-
+ *Return: Nothing.
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-dog_t *newDog;
-char *newName;
-char *newOwner;
-int size = 4;
+	char *a, *b;
+	dog_t *irondog;
 
-newDog = (dog_t *)malloc(sizeof(struct dog) * size);
-if (newDog == NULL)
-{
-free(newDog);
-return (NULL);
-}
-newName = (char *)malloc(sizeof((name) + 1) * size);
-if (newName == NULL)
-{
-free(newDog);
-return (NULL);
-}
-newOwner = (char *)malloc(sizeof((owner) + 1) * size);
-if (newOwner == NULL)
-{
-free(newDog);
-free(newName);
-return (NULL);
-}
-newName = name;
-newOwner = owner;
-
-newDog->name = newName;
-newDog->owner = newOwner;
-newDog->age = age;
-
-return (newDog);
+	irondog = malloc(sizeof(dog_t));
+	if (irondog == NULL)
+		return (NULL);
+	a = _strdup(name);
+	if (a == NULL)
+	{
+		free(irondog);
+		return (NULL);
+	}
+	b = _strdup(owner);
+	if (b == NULL)
+	{
+		free(a);
+		free(irondog);
+		return (NULL);
+	}
+	irondog->name = a;
+	irondog->owner = b;
+	irondog->age = age;
+	return (irondog);
 }
