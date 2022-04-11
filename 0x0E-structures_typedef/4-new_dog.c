@@ -1,64 +1,42 @@
 #include "dog.h"
 #include <stdlib.h>
-#include <stdio.h>
 /**
- * _strdup - create an array with special charcter.
- * @str: chacter value.
- *
- * Return: .
- */
-char *_strdup(char *str)
-{
-	unsigned int i;
-	char *s;
-
-	if (str == NULL)
-		return (NULL);
-	for (i = 0; str[i] != 0; i++)
-		;
-	i = i + 1;
-	s = malloc(sizeof(char) * i);
-	if (s == NULL)
-		return (NULL);
-	if (s != NULL)
-	{
-		for (i = 0; str[i] != 0; i++)
-			s[i] = str[i];
-	}
-	s[i] = '\0';
-	return (s);
-}
-/**
- *new_dog  -  create new dog.
- *@name: character value.
- *@age: float value.
- *@owner: character value.
- *
- *Return: Nothing.
- */
+ * new_dog - creates a new dog.
+ * @name: pointer to a char for name of dog
+ * @age: age of dog
+ * @owner: pointer to a char for owner of dog
+ * Return: pointer to a new dog of type dog_t
+ **/
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	char *a, *b;
-	dog_t *irondog;
+	int nameLen, ownerLen, i;
+	dog_t *d1;
 
-	irondog = malloc(sizeof(dog_t));
-	if (irondog == NULL)
+	d1 = (dog_t *)malloc(sizeof(dog_t));
+	if (d1 == NULL)
 		return (NULL);
-	a = _strdup(name);
-	if (a == NULL)
+	nameLen = ownerLen = 0;
+	while (name[nameLen++])
+		;
+	while (owner[ownerLen++])
+		;
+	d1->name = malloc(nameLen * sizeof(d1->name));
+	if (d1->name == NULL)
 	{
-		free(irondog);
+		free(d1);
 		return (NULL);
 	}
-	b = _strdup(owner);
-	if (b == NULL)
+	for (i = 0; i <= nameLen; i++)
+		d1->name[i] = name[i];
+	d1->age = age;
+	d1->owner = malloc(ownerLen * sizeof(d1->owner));
+	if (d1->owner == NULL)
 	{
-		free(a);
-		free(irondog);
+		free(d1->name);
+		free(d1);
 		return (NULL);
 	}
-	irondog->name = a;
-	irondog->owner = b;
-	irondog->age = age;
-	return (irondog);
+	for (i = 0; i <= ownerLen; i++)
+		d1->owner[i] = owner[i];
+	return (d1);
 }
