@@ -83,4 +83,3 @@ int main(int ac, char *av[])
 	cp(av[1], av[2]);
 	return (0);
 }
-
